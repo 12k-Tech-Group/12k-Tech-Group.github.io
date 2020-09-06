@@ -1,0 +1,33 @@
+<!DOCTYPE html><html><head><meta charSet="utf-8"/><title>12k Tech Blog - 为啥内存不使用GDDR显存芯片</title><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.css" integrity="sha384-D+9gmBxUQogRLqvARvNLmA9hS2x//eK1FhVb9PiU86gmcrBrJAQT8okdJ4LMp2uv" crossorigin="anonymous"/><link rel="stylesheet" href="/css/github-markdown.css"/><link rel="stylesheet" href="/css/highlight.css"/><script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.js" integrity="sha384-483A6DwYfKeDa0Q52fJmxFXkcPCFfnXMoXblOkJ4JcA8zATN6Tm78UNL72AKk+0O" crossorigin="anonymous"></script><script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/contrib/auto-render.min.js" integrity="sha384-yACMu8JWxKzSp/C1YV86pzGiQ/l1YUfE8oPuahJQxzehAjEt2GiQuy/BIvl9KyeF" crossorigin="anonymous"></script><meta name="next-head-count" content="9"/><link rel="preload" href="/_next/static/css/556eb87153dc9ca625fe.css" as="style"/><link rel="stylesheet" href="/_next/static/css/556eb87153dc9ca625fe.css"/><link rel="preload" href="/_next/static/css/47b2eccbc2f53b4c5bb6.css" as="style"/><link rel="stylesheet" href="/_next/static/css/47b2eccbc2f53b4c5bb6.css"/><link rel="preload" href="/_next/static/chunks/main-794d8598b5f1f819e70a.js" as="script"/><link rel="preload" href="/_next/static/chunks/webpack-ccf5ab034a524403276a.js" as="script"/><link rel="preload" href="/_next/static/chunks/framework.6c6c2144b5674c37af03.js" as="script"/><link rel="preload" href="/_next/static/chunks/commons.c1da88ced54c9ffa7714.js" as="script"/><link rel="preload" href="/_next/static/chunks/pages/_app-6b3651ecef8878c0ce3d.js" as="script"/><link rel="preload" href="/_next/static/chunks/99a17ff61bb56832986f97369f36a5b6e9c99511.4b656b6a47797cef6e06.js" as="script"/><link rel="preload" href="/_next/static/chunks/pages/post/%5B...all%5D-2d583e24f5dfdb34109a.js" as="script"/></head><body><div id="__next"><div><div class="relative bg-white Banner_banner__2vTsv"><div class="white pt6 pb5 Banner_banner_content__1HXXB"><h1 class="mv2 f2">12K Tech Blog</h1><div><a class="dib f6 white no-underline mr2" href="/">HOME</a><a class="dib f6 white no-underline mr2" href="https://github.com/12k-Tech-Group">GITHUB</a></div></div></div><main class="lh-copy"><div class="center mw6 ph4 pv3 bg-white markdown-body Post_markdown_body__1i0dP"><small class="mt1 db ttu o-40 Post_post_header__2ubQL"><span>麦卡子<!-- --> </span><time>2020/09/06</time></small><div><h1>为啥内存不使用GDDR显存芯片</h1>
+<h2>引子</h2>
+<p>【管理员】王大可 2020/09/05 18:23:05</p>
+<p>​	为啥内存不使用显存芯片</p>
+<p>【))】白神 2020/09/05 18:26:40</p>
+<p>​	这个问题本群解释过了吧</p>
+<p>​	我已经不知道自己2018年写下的字是啥意思了</p>
+<h2>正文</h2>
+<p>​	GDDR显存针对存储有关图形的数据进行了优化，可以承受更大的吞吐量，而DDR则针对CPU进行优化，可以存储当前正在处理的应用程序和数据，拥有更低的延迟。</p>
+<h3>GDDR为了图像显示和渲染，带宽很大，更省电，但有四个重要的缺点</h3>
+<p><a href="https://zhuanlan.zhihu.com/p/83935084">这段是抄的，来自于知乎用户老狼</a></p>
+<ol>
+<li>
+<p><strong>延迟高</strong>（主要原因）。</p>
+<p>​	CAS的Latency高，这让GDDR更适合图像处理这种高并发的，大块搬移内存的操作。而像CPU这种几乎完全随机的访问，延迟更加重要。</p>
+</li>
+<li>
+<p><strong>容量小</strong>。</p>
+<p>​	我们知道 X几对内存容量是十分重要的。GDDR一般X32甚至X64，不容易组成大容量内存。现在顶级的3090才24G显存，而服务器对内存的要求成百上千G了。</p>
+</li>
+<li>
+<p><strong>价格昂贵</strong>。</p>
+<p>​	工艺要求高，时序复杂，更贵。</p>
+</li>
+<li>
+<p><strong>不适合CPU Cache Line</strong>。</p>
+<p>​	这个我就不展开讲了，毕竟老狼也没展开讲。</p>
+</li>
+</ol>
+<h2>个人想法（私货，爬</h2>
+<p>​	个人觉得吧，PC这玩意吧，上限很高，下限也很低，就算要搞GDDR的话，穷人也玩不起，DDR4现在的瓶颈也不是很明显（DDR5要来了）</p>
+<p>​	要是有钱，现在的DDR4也能超到4266-4800不是吗，也很强的（除了Zen2有个fclk的坎，不多说了吧，zen+用户默默流泪等zen3。</p>
+</div></div></main><footer class="center w5 f6 tc mt4 black"><p><span>© </span><span>2020-<!-- -->2020<!-- --> 12k Tech Blog</span></p></footer></div></div><script id="__NEXT_DATA__" type="application/json">{"props":{"pageProps":{"title":"为啥内存不使用GDDR显存芯片","date":"2020-09-06T11:33:00.000Z","author":[{"name":"麦卡子","link":""}],"html":"\u003ch1\u003e为啥内存不使用GDDR显存芯片\u003c/h1\u003e\n\u003ch2\u003e引子\u003c/h2\u003e\n\u003cp\u003e【管理员】王大可 2020/09/05 18:23:05\u003c/p\u003e\n\u003cp\u003e​\t为啥内存不使用显存芯片\u003c/p\u003e\n\u003cp\u003e【))】白神 2020/09/05 18:26:40\u003c/p\u003e\n\u003cp\u003e​\t这个问题本群解释过了吧\u003c/p\u003e\n\u003cp\u003e​\t我已经不知道自己2018年写下的字是啥意思了\u003c/p\u003e\n\u003ch2\u003e正文\u003c/h2\u003e\n\u003cp\u003e​\tGDDR显存针对存储有关图形的数据进行了优化，可以承受更大的吞吐量，而DDR则针对CPU进行优化，可以存储当前正在处理的应用程序和数据，拥有更低的延迟。\u003c/p\u003e\n\u003ch3\u003eGDDR为了图像显示和渲染，带宽很大，更省电，但有四个重要的缺点\u003c/h3\u003e\n\u003cp\u003e\u003ca href=\"https://zhuanlan.zhihu.com/p/83935084\"\u003e这段是抄的，来自于知乎用户老狼\u003c/a\u003e\u003c/p\u003e\n\u003col\u003e\n\u003cli\u003e\n\u003cp\u003e\u003cstrong\u003e延迟高\u003c/strong\u003e（主要原因）。\u003c/p\u003e\n\u003cp\u003e​\tCAS的Latency高，这让GDDR更适合图像处理这种高并发的，大块搬移内存的操作。而像CPU这种几乎完全随机的访问，延迟更加重要。\u003c/p\u003e\n\u003c/li\u003e\n\u003cli\u003e\n\u003cp\u003e\u003cstrong\u003e容量小\u003c/strong\u003e。\u003c/p\u003e\n\u003cp\u003e​\t我们知道 X几对内存容量是十分重要的。GDDR一般X32甚至X64，不容易组成大容量内存。现在顶级的3090才24G显存，而服务器对内存的要求成百上千G了。\u003c/p\u003e\n\u003c/li\u003e\n\u003cli\u003e\n\u003cp\u003e\u003cstrong\u003e价格昂贵\u003c/strong\u003e。\u003c/p\u003e\n\u003cp\u003e​\t工艺要求高，时序复杂，更贵。\u003c/p\u003e\n\u003c/li\u003e\n\u003cli\u003e\n\u003cp\u003e\u003cstrong\u003e不适合CPU Cache Line\u003c/strong\u003e。\u003c/p\u003e\n\u003cp\u003e​\t这个我就不展开讲了，毕竟老狼也没展开讲。\u003c/p\u003e\n\u003c/li\u003e\n\u003c/ol\u003e\n\u003ch2\u003e个人想法（私货，爬\u003c/h2\u003e\n\u003cp\u003e​\t个人觉得吧，PC这玩意吧，上限很高，下限也很低，就算要搞GDDR的话，穷人也玩不起，DDR4现在的瓶颈也不是很明显（DDR5要来了）\u003c/p\u003e\n\u003cp\u003e​\t要是有钱，现在的DDR4也能超到4266-4800不是吗，也很强的（除了Zen2有个fclk的坎，不多说了吧，zen+用户默默流泪等zen3。\u003c/p\u003e\n"},"__N_SSG":true},"page":"/post/[...all]","query":{"all":["2020","why-use-ddr-instead-of-gddr"]},"buildId":"uG6Uyw8TQZ-_5ALPSJHi5","nextExport":false,"isFallback":false,"gsp":true}</script><script nomodule="" src="/_next/static/chunks/polyfills-c30a0338d988282f18a0.js"></script><script src="/_next/static/chunks/main-794d8598b5f1f819e70a.js" async=""></script><script src="/_next/static/chunks/webpack-ccf5ab034a524403276a.js" async=""></script><script src="/_next/static/chunks/framework.6c6c2144b5674c37af03.js" async=""></script><script src="/_next/static/chunks/commons.c1da88ced54c9ffa7714.js" async=""></script><script src="/_next/static/chunks/pages/_app-6b3651ecef8878c0ce3d.js" async=""></script><script src="/_next/static/chunks/99a17ff61bb56832986f97369f36a5b6e9c99511.4b656b6a47797cef6e06.js" async=""></script><script src="/_next/static/chunks/pages/post/%5B...all%5D-2d583e24f5dfdb34109a.js" async=""></script><script src="/_next/static/uG6Uyw8TQZ-_5ALPSJHi5/_buildManifest.js" async=""></script><script src="/_next/static/uG6Uyw8TQZ-_5ALPSJHi5/_ssgManifest.js" async=""></script></body></html>
